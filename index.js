@@ -10,7 +10,7 @@ if (!name || name.match(/[<>:"\/\\|?*\x00-\x1F]/)) {
 `);
 }
 
-const repoURL = 'https://github.com/w3cj/express-api-starter.git';
+const repoURL = 'https://github.com/ChrisTheButcher/express-api-starter';
 
 runCommand('git', ['clone', repoURL, name])
   .then(() => {
@@ -18,6 +18,11 @@ runCommand('git', ['clone', repoURL, name])
   }).then(() => {
     console.log('Installing dependencies...');
     return runCommand('npm', ['install'], {
+      cwd: process.cwd() + '/' + name
+    });
+  }).then(() => {
+    console.log('Building ts...');
+    return runCommand('npm', ['run', 'build'], {
       cwd: process.cwd() + '/' + name
     });
   }).then(() => {
@@ -35,11 +40,11 @@ function runCommand(command, args, options = undefined) {
     spawned.stdout.on('data', (data) => {
       console.log(data.toString());
     });
-    
+
     spawned.stderr.on('data', (data) => {
       console.error(data.toString());
     });
-    
+
     spawned.on('close', () => {
       resolve();
     });
