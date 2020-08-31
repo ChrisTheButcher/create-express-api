@@ -6,7 +6,7 @@ const name = process.argv[2];
 if (!name || name.match(/[<>:"\/\\|?*\x00-\x1F]/)) {
   return console.log(`
   Invalid directory name.
-  Usage: create-express-api name-of-api  
+  Usage: create-ts-express-api name-of-api  
 `);
 }
 

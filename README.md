@@ -1,4 +1,4 @@
-# create-express-api
+# create-ts-express-api
 
 A CLI to automatically clone the [Express API Starter](https://github.com/ChrisTheButcher/express-api-starter).
 
